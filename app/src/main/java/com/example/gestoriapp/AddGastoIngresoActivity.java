@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,7 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
     private Spinner spinner;
     private ArrayAdapter<String> adapterConcepto;
 
-
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,8 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinnerId);
         spinnerLabel = (TextView) findViewById(R.id.spinnerLabel);
 
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
+        res = getResources();
 
         initDict();
         establecimiento = (Establecimiento) map.get("ESTABLECIMIENTO_SELECCIONADO");
@@ -122,24 +125,24 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
                             insertarGastoIngresoEnlaBd((SQLiteDatabase) map.get("db") ,gasto.getConcepto(), gasto.getDescripcion(), fechaCalendario, gasto.getImporte(), gasto.getFechaRegistroApp());
                             goToEstablecimientoActivity();
                         }else{
-                            crearDialog("Concepto de gasto vacío","Elija el concepto del gasto, por favor.").show();
+                            crearDialog(res.getString(R.string.titleAddGastoConceptoVacio),res.getString(R.string.bodyAddGastoConceptoVacio)).show();
                         }
                     }
                 }else{
-                    Toast.makeText(AddGastoIngresoActivity.this, "El importe debe introducirse como un numero mayor que 0, ya sea un Gasto o un Ingreso", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddGastoIngresoActivity.this, res.getString(R.string.addGastoIngresoImportePositivo), Toast.LENGTH_LONG).show();
                 }
             }else{
-                Toast.makeText(AddGastoIngresoActivity.this, "Debes seleccionar el tipo de transacción (Gasto/Ingreso)", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddGastoIngresoActivity.this, res.getString(R.string.addGastoIngresoTipoTransaccion), Toast.LENGTH_LONG).show();
             }
 
         }else{
-            crearDialog("Campos vacíos","El importe y la fecha de la transacción no pueden ser vacías, introdúzcalas por favor.").show();
+            crearDialog(res.getString(R.string.titleAddGastoIngresoCamposVacios),res.getString(R.string.bodyAddGastoIngresoCamposVacios)).show();
         }
     }
 
     private void goToEstablecimientoActivity(){
         Intent intent = new Intent(this, EstablecimientoActivity.class);
-        Toast.makeText(AddGastoIngresoActivity.this, "La transacción se ha añadido", Toast.LENGTH_LONG).show();
+        Toast.makeText(AddGastoIngresoActivity.this,res.getString(R.string.confirmacionAddTransaction) , Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
@@ -185,7 +188,7 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(AddGastoIngresoActivity.this);
         builder.setTitle(titulo);
 
-        builder.setMessage(cuerpo).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //
             }

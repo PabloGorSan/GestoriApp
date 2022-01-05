@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">📝  Gestori app</string>
+    <string name="ok"> Ok </string>
+
+    <string name="addConceptoSuccess"> El concepto ha sido añadido </string>
+    <string name="addConceptoFailure"> El concepto no puede ser vacío </string>
+    <string name="titleAddEstablecimientoSinConcepto"> Sin conceptos </string>
+    <string name="bodyAddEstablecimientoSinConcepto"> La lista de conceptos de este establecimiento está vacía. Por favor, añada alguno. </string>
+    <string name="titleAddEstablecimientoCamposVacios"> Campos vacíos </string>
+    <string name="bodyAddEstablecimientoCamposVacios"> Rellene todos los campos, por favor. </string>
+    <string name="titleAddGastoIngresoCamposVacios"> Campos vacíos </string>
+    <string name="bodyAddGastoIngresoCamposVacios"> El importe y la fecha de la transacción no pueden ser vacías. </string>
+    <string name="addGastoIngresoTipoTransaccion"> Debes seleccionar el tipo de transacción (Gasto/Ingreso) </string>
+    <string name="addGastoIngresoImportePositivo"> El importe debe introducirse como un numero mayor que 0 </string>
+    <string name="titleAddGastoConceptoVacio"> Concepto de gasto vacío </string>
+    <string name="bodyAddGastoConceptoVacio"> Elija el concepto del gasto, por favor. </string>
+    <string name="confirmacionAddTransaction"> La transacción se ha añadido </string>
+    <string name="respuestaPositiva">Si</string>
+    <string name="respuestaNegativa">No</string>
+    <string name="titleBorrarConfirmacion"> Confirmación </string>
+    <string name="bodyBorrarConfirmacion"> ¿Estás seguro de que quieres borrarlo? </string>
+</resources>

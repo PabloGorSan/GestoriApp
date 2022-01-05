@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class EstablecimientoActivity extends AppCompatActivity {
 
     private SortedMap<String, Object> map;
     private Establecimiento establecimiento;
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class EstablecimientoActivity extends AppCompatActivity {
 
         textEstablecimiento = (TextView) findViewById(R.id.textEstablecimiento);
         listviewGastosIngresos = (ListView) findViewById(R.id.listviewGastosIngresos);
+
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
+        res = getResources();
 
         initDict();
         establecimiento = (Establecimiento) map.get("ESTABLECIMIENTO_SELECCIONADO");
@@ -86,7 +91,8 @@ public class EstablecimientoActivity extends AppCompatActivity {
 
 
     public void onClickBorrarEstablecimiento(View view){
-        crearDialog("Confirmación","¿Estás seguro de que quieres borrar este establecimiento?").show();
+        //Cuando se confirma la accion dentro del crearDialog se borra el establecimiento
+        crearDialog(res.getString(R.string.titleBorrarConfirmacion),res.getString(R.string.bodyBorrarConfirmacion)).show();
     }
 
 
@@ -95,7 +101,7 @@ public class EstablecimientoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(EstablecimientoActivity.this);
         builder.setTitle(titulo);
 
-        builder.setMessage(cuerpo).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.respuestaPositiva), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
                 SQLiteDatabase db = (SQLiteDatabase) map.get("db");
@@ -121,7 +127,7 @@ public class EstablecimientoActivity extends AppCompatActivity {
                 establecimiento = null;
                 goToPantallaPrincipal();
             }
-        }).setNegativeButton("No",  new DialogInterface.OnClickListener() {
+        }).setNegativeButton(res.getString(R.string.respuestaNegativa),  new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //
             }

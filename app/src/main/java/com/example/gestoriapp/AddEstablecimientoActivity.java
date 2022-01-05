@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,7 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
     private TextInputEditText textInputEditTextConceptos;
 
     List<String> conceptos;
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,9 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
         textInputEditTextCodigoPostal = (TextInputEditText) findViewById(R.id.textInputEditTextCodigoPostal);
         textInputEditTextConceptos = (TextInputEditText) findViewById(R.id.textInputEditTextConceptos);
 
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
+        res = getResources();
+
     }
 
     private void initDict () {
@@ -56,12 +61,12 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
 
         //Los conceptos de gasto deben ser distintos de "" para ser válidos y añadidos a la lista
         if(!concepto.equals("")){
-            Toast.makeText(AddEstablecimientoActivity.this, "El concepto ha sido añadido", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddEstablecimientoActivity.this, res.getString(R.string.addConceptoSuccess) , Toast.LENGTH_LONG).show();
             conceptos.add(concepto);
 
             textInputEditTextConceptos.setText("");
         }else{
-            Toast.makeText(AddEstablecimientoActivity.this, "El concepto no puede ser vacío", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddEstablecimientoActivity.this, res.getString(R.string.addConceptoFailure), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -84,10 +89,10 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }else{
-                crearDialog("Faltan conceptos","No se ha añadido ningún concepto a la lista de conceptos de gasto. Por favor, añada alguno.").show();
+                crearDialog(res.getString(R.string.titleAddEstablecimientoSinConcepto),res.getString(R.string.bodyAddEstablecimientoSinConcepto)).show();
             }
         }else{
-            crearDialog("Campos vacíos","Rellene todos los campos, por favor.").show();
+            crearDialog(res.getString(R.string.titleAddEstablecimientoCamposVacios),res.getString(R.string.bodyAddEstablecimientoCamposVacios)).show();
         }
 
     }
@@ -96,7 +101,7 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEstablecimientoActivity.this);
         builder.setTitle(titulo);
 
-        builder.setMessage(cuerpo).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //
             }

@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
     private SortedMap<String, Object> map;
     private Establecimiento establecimiento;
     private GastoIngreso gastoIngreso;
-
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class GastoIngresoActivity extends AppCompatActivity {
         textFecha = (TextView) findViewById(R.id.valorFecha);
         textDescripcion = (TextView) findViewById(R.id.valorDescripcion);
         textConcepto = (TextView) findViewById(R.id.valorConcepto);
+
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
+        res = getResources();
 
         initDict();
         gastoIngreso = (GastoIngreso) map.get("GASTOINGRESO_SELECCIONADO");
@@ -55,7 +59,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
 
     public void onClickBorrarTransaccion(View view){
         //Cuando se confirma la accion dentro del crearDialog se borra la transacción
-        crearDialog("Confirmación","¿Estás seguro de que quieres borrar esta transacción?").show();
+        crearDialog(res.getString(R.string.titleBorrarConfirmacion),res.getString(R.string.bodyBorrarConfirmacion)).show();
     }
 
 
@@ -63,7 +67,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GastoIngresoActivity.this);
         builder.setTitle(titulo);
 
-        builder.setMessage(cuerpo).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.respuestaPositiva), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if(gastoIngreso.getImporte()>0){
                     //Aqui borramos un Ingreso
@@ -82,7 +86,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
                 gastoIngreso = null;
                 goToEstablecimiento();
             }
-        }).setNegativeButton("No",  new DialogInterface.OnClickListener() {
+        }).setNegativeButton(res.getString(R.string.respuestaNegativa),  new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //
             }

@@ -66,10 +66,7 @@ public class MainActivity extends AppCompatActivity {
         textInitialScreen = (TextView) findViewById(R.id.textInitialScreen);
         listviewEstablecimientos = (ListView) findViewById(R.id.listviewEstablecimientos);
 
-        initDict(); //Aqui se pillarán los datos de la BD en principio
-
-        //TODO: ESTO ES SOLO PARA PONERLE GASTO INGRESOS A PAQUI DE MOMENTO,
-        // LUEGO HACERLO PARA TODOS LOS USUARIOS
+        initDict();
 
 
         List<Establecimiento> establecimientosList = new ArrayList<>();

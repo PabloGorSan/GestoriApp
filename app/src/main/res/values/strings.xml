@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">📝  Gestori app</string>
+    <string name="ok"> Ok </string>
+
+    <string name="addConceptoSuccess"> The concept has been addded </string>
+    <string name="addConceptoFailure"> The concept cannot be empty </string>
+    <string name="titleAddEstablecimientoSinConcepto"> No concepts </string>
+    <string name="bodyAddEstablecimientoSinConcepto"> The list of concepts for this establishment is empty. Please, add a concept. </string>
+    <string name="titleAddEstablecimientoCamposVacios"> Empty fields </string>
+    <string name="bodyAddEstablecimientoCamposVacios"> The fields of this form cannot be empty. </string>
+    <string name="titleAddGastoIngresoCamposVacios"> Empty fields </string>
+    <string name="bodyAddGastoIngresoCamposVacios"> The amount and the transaction date cannot be empty. </string>
+    <string name="addGastoIngresoTipoTransaccion"> Select the type of transaction (Expense/Revenue) </string>
+    <string name="addGastoIngresoImportePositivo"> The amount introduced must be bigger than 0 </string>
+    <string name="titleAddGastoConceptoVacio"> Concept of expense is empty </string>
+    <string name="bodyAddGastoConceptoVacio"> Choose the concept of the expense, please. </string>
+    <string name="confirmacionAddTransaction"> The transaction has been added </string>
+    <string name="respuestaPositiva">Yes</string>
+    <string name="respuestaNegativa">No</string>
+    <string name="titleBorrarConfirmacion"> Confirmation </string>
+    <string name="bodyBorrarConfirmacion"> Are you sure you want to delete this? </string>
 </resources>
