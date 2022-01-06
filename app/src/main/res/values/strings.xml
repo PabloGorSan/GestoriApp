@@ -19,4 +19,21 @@
     <string name="respuestaNegativa">No</string>
     <string name="titleBorrarConfirmacion"> Confirmation </string>
     <string name="bodyBorrarConfirmacion"> Are you sure you want to delete this? </string>
+    <string name="textListaEstablecimientos"> Establishments list </string>
+    <string name="textBorrar"> Delete </string>
+    <string name="textSeleccionarFecha"> Select date </string>
+    <string name="textAñadir"> Add </string>
+    <string name="textGasto"> Expense </string>
+    <string name="textIngreso"> Revenue </string>
+    <string name="textImporte"> Amount </string>
+    <string name="textDescripcion"> Description </string>
+    <string name="textConcepto"> Concept </string>
+    <string name="textConceptos"> Concepts </string>
+    <string name="textSeleccionarConcepto"> Select concept </string>
+    <string name="textFecha"> Date </string>
+    <string name="textNombre"> Name </string>
+    <string name="textCiudad"> City </string>
+    <string name="textCalle"> Street </string>
+    <string name="textCodigoPostal"> Postal code </string>
+    <string name="textGraficas"> Charts </string>
 </resources>

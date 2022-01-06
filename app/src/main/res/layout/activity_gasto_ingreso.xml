@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Importe:"
+                android:text="@string/textImporte"
                 android:textSize="18sp" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Fecha:"
+                android:text="@string/textFecha"
                 android:textSize="18sp" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Descripcion:"
+                android:text="@string/textDescripcion"
                 android:textSize="18sp" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Concepto:"
+                android:text="@string/textConcepto"
                 android:textSize="18sp" />
 
             <TextView
@@ -121,7 +121,7 @@
             android:layout_marginTop="30dp"
             android:backgroundTint="#F44336"
             android:onClick="onClickBorrarTransaccion"
-            android:text="Borrar"
+            android:text="@string/textBorrar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />

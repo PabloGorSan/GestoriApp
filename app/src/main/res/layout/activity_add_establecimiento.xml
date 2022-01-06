@@ -36,7 +36,7 @@
                 android:id="@+id/textInputEditTextNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre" />
+                android:hint="@string/textNombre" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +50,7 @@
                 android:id="@+id/textInputEditTextCiudad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ciudad"  />
+                android:hint="@string/textCiudad" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +64,7 @@
                 android:id="@+id/textInputEditTextCalle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Calle" />
+                android:hint="@string/textCalle" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,12 +78,12 @@
                 android:id="@+id/textInputEditTextCodigoPostal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Codigo postal" />
+                android:hint="@string/textCodigoPostal" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="78dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -98,7 +98,7 @@
                     android:id="@+id/textInputEditTextConceptos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Conceptos"  />
+                    android:hint="@string/textConceptos" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -126,7 +126,7 @@
             android:layout_marginTop="100dp"
             android:backgroundTint="#3F51B5"
             android:onClick="onClickAddEstablecimiento"
-            android:text="Añadir establecimiento"
+            android:text="@string/textAñadir"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />

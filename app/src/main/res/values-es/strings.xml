@@ -19,4 +19,21 @@
     <string name="respuestaNegativa">No</string>
     <string name="titleBorrarConfirmacion"> Confirmación </string>
     <string name="bodyBorrarConfirmacion"> ¿Estás seguro de que quieres borrarlo? </string>
+    <string name="textListaEstablecimientos"> Lista de establecimientos </string>
+    <string name="textBorrar"> Borrar </string>
+    <string name="textSeleccionarFecha"> Seleccionar fecha </string>
+    <string name="textAñadir"> Añadir </string>
+    <string name="textGasto"> Gasto </string>
+    <string name="textIngreso"> Ingreso </string>
+    <string name="textImporte"> Importe </string>
+    <string name="textDescripcion"> Descripción </string>
+    <string name="textConcepto"> Concepto </string>
+    <string name="textConceptos"> Conceptos </string>
+    <string name="textSeleccionarConcepto"> Seleccionar concepto </string>
+    <string name="textFecha"> Fecha </string>
+    <string name="textNombre"> Nombre </string>
+    <string name="textCiudad"> Ciudad </string>
+    <string name="textCalle"> Calle </string>
+    <string name="textCodigoPostal"> Código postal </string>
+    <string name="textGraficas"> Gráficas </string>
 </resources>

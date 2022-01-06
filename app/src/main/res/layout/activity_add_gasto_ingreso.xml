@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:onClick="onClickGasto"
-            android:text="Gasto" />
+            android:text="@string/textGasto" />
 
         <RadioButton
             android:id="@+id/radioButtonIngreso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickIngreso"
-            android:text="Ingreso" />
+            android:text="@string/textIngreso" />
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +56,7 @@
             android:id="@+id/textInputEditTextImporte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Importe"
+            android:hint="@string/textImporte"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +67,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:onClick="onClickFecha"
-        android:text="Seleccionar fecha"
+        android:text="@string/textSeleccionarFecha"
         android:textAlignment="viewStart" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +81,7 @@
             android:id="@+id/textInputEditTextDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripcion" />
+            android:hint="@string/textDescripcion" />
     </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -90,8 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Seleccionar concepto"
-            android:visibility="gone"/>
+            android:text="@string/textSeleccionarConcepto"
+            android:visibility="gone" />
 
         <Spinner android:text="Selecciona"
             android:id="@+id/spinnerId"
@@ -107,7 +107,7 @@
             android:layout_marginTop="100dp"
             android:backgroundTint="#3F51B5"
             android:onClick="onClickAddGastoIngreso"
-            android:text="Añadir"
+            android:text="@string/textAñadir"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
