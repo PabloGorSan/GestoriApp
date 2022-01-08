@@ -30,7 +30,7 @@ import java.util.SortedMap;
 public class AddGastoIngresoActivity extends AppCompatActivity {
 
     private Establecimiento establecimiento;
-    private TextView textPruebaFecha;
+    private TextView textFecha;
     private TextView spinnerLabel;
     private SortedMap<String, Object> map;
     private TextInputEditText textInputEditTextImporte;
@@ -54,7 +54,7 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_gasto_ingreso);
 
         //TODO: Borrar luego
-        textPruebaFecha = (TextView) findViewById(R.id.textViewPruebaFecha);
+        textFecha = (TextView) findViewById(R.id.textViewFecha);
         //
 
 
@@ -177,7 +177,7 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
             public void onDateSet(DatePicker dp, int año, int mes, int dia){
 
                 fechaCalendario = dia+ "/" + (mes+1) + "/" + año;
-                textPruebaFecha.setText(fechaCalendario);
+                textFecha.setText(fechaCalendario);
 
             }
         },year, month, day);

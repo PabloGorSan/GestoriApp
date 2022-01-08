@@ -17,6 +17,7 @@ public class Establecimiento {
     private List<GastoIngreso> listaIngresos;
     private long fechaRegistroApp;
 
+
     public Establecimiento(String nombre, String ciudad, String calle, String codigoPostal, List<String> conceptos, long fechaRegistroApp){
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -122,7 +123,7 @@ public class Establecimiento {
 
     @Override
     public String toString() {
-        return this.nombre + " " + this.calle;
+        return this.nombre + " | " + this.ciudad +", " + this.calle;
     }
 
 
