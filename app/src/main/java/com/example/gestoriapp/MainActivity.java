@@ -2,7 +2,11 @@ package com.example.gestoriapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -24,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textInitialScreen;
     private ListView listviewEstablecimientos;
     private SortedMap<String,Object> map;
+    private Resources res;
+    private List<Establecimiento> establecimientosList = new ArrayList<>();
 
     //TODO: proximo dia
-    // 5.1 Internacionalización/Localización idioma
     // 6. Hacerlo más responsive y ponerlo bonito (Fuente, colores, detalles estéticos...)
-    // 7. Hacer las gráficas
-    // 8. Mirar la navegación
+
 
 
     private void initDict () {
@@ -38,11 +43,9 @@ public class MainActivity extends AppCompatActivity {
             //Creamos el map si no existe anteriormente
             map = new TreeMap<>();
 
-            //TODO: Aqui en teoria pillariamos los datos de la BD
             DbHelper dbHelper = new DbHelper(getApplicationContext(), "dbGestori.db");
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             map.put("db", db);
-
 
             insertarEstablecimientosEnMapa(db);
 
@@ -66,10 +69,9 @@ public class MainActivity extends AppCompatActivity {
         textInitialScreen = (TextView) findViewById(R.id.textInitialScreen);
         listviewEstablecimientos = (ListView) findViewById(R.id.listviewEstablecimientos);
 
+        res = getResources();
         initDict();
 
-
-        List<Establecimiento> establecimientosList = new ArrayList<>();
 
         for(String key : map.keySet()){
             if(!key.equals("ESTABLECIMIENTO_SELECCIONADO") && key.charAt(0) == 'E'){
@@ -97,9 +99,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        //Se desactiva el comportamiento por defecto del onBackPressed para
+        // no vuelva a entrar al formulario de creacion de un establecimiento recien creado
+    }
+
     public void onClickGoToGraficas(View view){
-        Intent intent = new Intent(this, GraficasActivity.class);
-        startActivity(intent);
+        if(establecimientosList.isEmpty() || !hayGastoIngresos()){
+            crearDialog(res.getString(R.string.titleIrAGraficasFailure),res.getString(R.string.bodyIrAGraficasFailure)).show();
+        } else {
+            Intent intent = new Intent(this, GraficasActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public boolean hayGastoIngresos(){
+        boolean hayGastoIngresos = false;
+        int i = 0;
+
+        while(!hayGastoIngresos && establecimientosList.size() > i ){
+            hayGastoIngresos = !(establecimientosList.get(i).getListaBeneficios().isEmpty());
+            i++;
+        }
+
+        return hayGastoIngresos;
     }
 
     public void onClickGoToAddEstablecimiento(View view){
@@ -108,8 +132,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToEstablecimiento(View view){
-        //TODO: No sabemos si ahora mismo hace falta el View aqui
-
         Intent intent = new Intent(this, EstablecimientoActivity.class);
         startActivity(intent);
     }
@@ -210,5 +232,18 @@ public class MainActivity extends AppCompatActivity {
         } finally {
             cursor.close();
         }
+    }
+
+    public Dialog crearDialog(String titulo, String cuerpo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle(titulo);
+
+        builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //
+            }
+        });
+
+        return builder.create();
     }
 }

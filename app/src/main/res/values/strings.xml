@@ -24,6 +24,7 @@
     <string name="textSeleccionarFecha"> Select date </string>
     <string name="textAñadir"> Add </string>
     <string name="textGasto"> Expense </string>
+    <string name="textGastos"> Expenses </string>
     <string name="textIngreso"> Revenue </string>
     <string name="textImporte"> Amount </string>
     <string name="textDescripcion"> Description </string>
@@ -36,4 +37,11 @@
     <string name="textCalle"> Street </string>
     <string name="textCodigoPostal"> Postal code </string>
     <string name="textGraficas"> Charts </string>
+    <string name="titleIrAGraficasFailure"> No establishments with transactions </string>
+    <string name="bodyIrAGraficasFailure"> Make sure to add transactions to any establishment before accessing the charts. </string>
+    <string name="initialTextChart"> SELECT A ESTABLISHMENT TO SEE THE DATA </string>
+    <string name="descriptionBarChart"> Benefits per establishment </string>
+    <string name="textGastosPorCategoriaSinGastos"> NO EXPENSES IN THIS ESTABLISHMENT </string>
+    <string name="textBeneficiosSinTransacciones"> NO TRANSACTIONS IN THIS ESTABLISHMENT </string>
+
 </resources>

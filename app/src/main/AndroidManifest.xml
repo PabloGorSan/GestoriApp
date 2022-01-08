@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestoriApp">
         <activity
+            android:name=".LineChartBeneficiosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PieChartGastosActivity"
+            android:exported="false" />
+        <activity
             android:name=".BarChartBeneficiosActivity"
             android:exported="false" />
         <activity

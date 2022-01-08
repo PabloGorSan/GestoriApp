@@ -93,6 +93,8 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
 
     }
 
+
+
     private void initDict () {
         //Sabemos que este map no a ver null
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);

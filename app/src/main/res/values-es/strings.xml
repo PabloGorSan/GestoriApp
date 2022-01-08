@@ -24,6 +24,7 @@
     <string name="textSeleccionarFecha"> Seleccionar fecha </string>
     <string name="textAñadir"> Añadir </string>
     <string name="textGasto"> Gasto </string>
+    <string name="textGastos"> Gastos </string>
     <string name="textIngreso"> Ingreso </string>
     <string name="textImporte"> Importe </string>
     <string name="textDescripcion"> Descripción </string>
@@ -36,4 +37,11 @@
     <string name="textCalle"> Calle </string>
     <string name="textCodigoPostal"> Código postal </string>
     <string name="textGraficas"> Gráficas </string>
+    <string name="titleIrAGraficasFailure"> No hay establecimientos con transacciones </string>
+    <string name="bodyIrAGraficasFailure"> Asegurate de añadir transacciones a algún establecimiento antes de acceder a las gráficas. </string>
+    <string name="initialTextChart"> SELECCIONA UN ESTABLECIMIENTO PARA VER SUS DATOS </string>
+    <string name="descriptionBarChart"> Beneficios por establecimiento </string>
+    <string name="textGastosPorCategoriaSinGastos"> NO HAY GASTOS EN ESTE ESTABLECIMIENTO </string>
+    <string name="textBeneficiosSinTransacciones"> NO HAY TRANSACCIONES EN ESTE ESTABLECIMIENTO </string>
+
 </resources>

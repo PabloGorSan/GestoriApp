@@ -19,6 +19,18 @@
             android:layout_height="wrap_content"
             android:onClick="onClickGoToBarChartBeneficios"
             android:text="Beneficios mensuales" />
+        <Button
+            android:id="@+id/pieChartButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGoToPieChartGastos"
+            android:text="Gastos por categoría" />
+        <Button
+            android:id="@+id/lineChartButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGoToLineChartBeneficios"
+            android:text="Beneficios totales" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

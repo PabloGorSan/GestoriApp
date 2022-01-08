@@ -11,15 +11,14 @@
         android:id="@+id/textInitialScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/textListaEstablecimientos"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089" />
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listviewEstablecimientos"
@@ -27,7 +26,7 @@
         android:layout_height="544dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,13 +35,13 @@
         android:id="@+id/graficasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="17dp"
 
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:onClick="onClickGoToGraficas"
         android:text="@string/textGraficas"
-        app:layout_constraintBottom_toTopOf="@+id/listviewEstablecimientos"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"

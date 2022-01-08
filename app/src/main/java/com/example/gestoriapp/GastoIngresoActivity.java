@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.SortedMap;
 
 public class GastoIngresoActivity extends AppCompatActivity {
@@ -45,10 +47,18 @@ public class GastoIngresoActivity extends AppCompatActivity {
         establecimiento = (Establecimiento) map.get("ESTABLECIMIENTO_SELECCIONADO");
 
         textImporte.setText(gastoIngreso.getImporte().toString());
-        textFecha.setText(gastoIngreso.getFecha().toString());
+        Date gastoIngresoFecha = gastoIngreso.getFecha();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        textFecha.setText(sdf.format(gastoIngresoFecha));
         textDescripcion.setText(gastoIngreso.getDescripcion());
         textConcepto.setText(gastoIngreso.getConcepto());
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, EstablecimientoActivity.class);
+        startActivity(intent);
     }
 
     private void initDict () {

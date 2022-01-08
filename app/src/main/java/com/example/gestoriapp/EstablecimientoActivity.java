@@ -70,6 +70,12 @@ public class EstablecimientoActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void initDict () {
         //Sabemos que este map no a ver null porque para llegar a este Activity ha tenido que seleccionar
         // un Establecimiento que se encuentra en el propio map
