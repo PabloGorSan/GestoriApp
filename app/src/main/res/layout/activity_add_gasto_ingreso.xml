@@ -6,83 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".AddGastoIngresoActivity">
 
-    <TextView
-        android:id="@+id/textViewPruebaFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="116dp"
-        android:text="Add GastoIngreso activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="398dp"
-        android:layout_height="620dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="match_parent"
+        android:layout_height="587dp"
+        android:gravity="center"
+
         android:orientation="vertical"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="77dp" >
-
-        <RadioButton
-            android:id="@+id/radioButtonGasto"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textViewPruebaFecha"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"
-            android:onClick="onClickGasto"
-            android:text="@string/textGasto" />
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/textAñadirTransacciones"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButtonIngreso"
+        <RadioGroup
             android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonGasto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:onClick="onClickGasto"
+                android:text="@string/textGasto" />
+
+            <RadioButton
+                android:id="@+id/radioButtonIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickIngreso"
+                android:text="@string/textIngreso" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:onClick="onClickIngreso"
-            android:text="@string/textIngreso" />
-    </RadioGroup>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextImporte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/textImporte"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextImporte"
-            android:layout_width="match_parent"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:hint="@string/textImporte"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:onClick="onClickFecha"
-        android:text="@string/textSeleccionarFecha"
-        android:textAlignment="viewStart" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/textDescripcion" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextDescripcion"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/textDescripcion" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp"
+            android:onClick="onClickFecha"
+            android:text="@string/textSeleccionarFecha"
+            android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/spinnerLabel"
@@ -93,18 +98,18 @@
             android:text="@string/textSeleccionarConcepto"
             android:visibility="gone" />
 
-        <Spinner android:text="Selecciona"
+        <Spinner
             android:id="@+id/spinnerId"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="Selecciona"
             android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonAddGastoIngreso"
-            android:layout_width="match_parent"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:backgroundTint="#3F51B5"
             android:onClick="onClickAddGastoIngreso"
             android:text="@string/textAñadir"

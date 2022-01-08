@@ -43,5 +43,6 @@
     <string name="descriptionBarChart"> Benefits per establishment </string>
     <string name="textGastosPorCategoriaSinGastos"> NO EXPENSES IN THIS ESTABLISHMENT </string>
     <string name="textBeneficiosSinTransacciones"> NO TRANSACTIONS IN THIS ESTABLISHMENT </string>
-
+    <string name="textAñadirTransacciones"> Add your transaction </string>
+    <string name="textAñadirEstablecimientos"> Add your establishment </string>
 </resources>
