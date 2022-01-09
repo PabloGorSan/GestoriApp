@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -32,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private Resources res;
     private List<Establecimiento> establecimientosList = new ArrayList<>();
 
-    //TODO: proximo dia
-    // 6. Hacerlo más responsive y ponerlo bonito (Fuente, colores, detalles estéticos...)
-
-
 
     private void initDict () {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
@@ -46,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             DbHelper dbHelper = new DbHelper(getApplicationContext(), "dbGestori.db");
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             map.put("db", db);
+
+
+            SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+            boolean firstStart = prefs.getBoolean("firstStart", true);
+            if(firstStart){
+                inicializarDB(db);
+            }
+
+            crearDialog(res.getString(R.string.titleBienvenida),res.getString(R.string.bodyBienvenida)).show();
 
             insertarEstablecimientosEnMapa(db);
 
@@ -246,4 +253,107 @@ public class MainActivity extends AppCompatActivity {
 
         return builder.create();
     }
+
+    public void inicializarDB(SQLiteDatabase db) {
+        //Insertar Establecimientos
+        String[] nombre = new String[] {"Panadería El Mollete", "Frutería Las Dos Naranjas", "Pescadería Pez Espada","Quiosco Fuente Colores"};
+        String[] ciudad = new String[] {"Málaga", "Málaga", "Málaga", "Málaga"};
+        String[] calle = new String[] {"Calle Antonio Ruíz", "Calle Maestro Jiménez", "Calle Alhaurín", "Avenida Jorge Luis Borges"};
+        String[] cp = new String[] {"29010","29010","29010","29010"};
+        long[] registro = new long[] {1,2,3,4};
+
+        for(int i = 0; i < nombre.length; i++) {
+            ContentValues values = new ContentValues();
+            values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_NOMBRE, nombre[i]);
+            values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_CIUDAD, ciudad[i]);
+            values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_CALLE, calle[i]);
+            values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_CP, cp[i]);
+            values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_REGISTRO, registro[i]);
+
+            db.insert(EstablecimientoContract.EstablecimientoEntry.TABLE_NAME, null, values);
+        }
+        //Insertar Conceptos de Gasto
+        String[] concepto1 = new String[] {"Alquiler","Luz","Ingredientes","Pastelería"};
+        String[] concepto2 = new String[] {"Alquiler","Luz","Fruta","Verdura"};
+        String[] concepto3 = new String[] {"Alquiler","Luz","Pescado"};
+        String[] concepto4 = new String[] {"Alquiler","Luz","Revistas","Comestibles","Juguetes"};
+
+        List<String[]> conceptos = new ArrayList<>();
+        conceptos.add(concepto1);
+        conceptos.add(concepto2);
+        conceptos.add(concepto3);
+        conceptos.add(concepto4);
+        for(int i = 0; i < conceptos.size(); i++){
+            String[] concepto = conceptos.get(i);
+            ContentValues values = new ContentValues();
+            for(int j = 0; j < concepto.length; j++){
+                values.put(ConceptoContract.ConceptoEntry.COLUMN_NAME_NOMBRE, concepto[j]);
+                values.put(ConceptoContract.ConceptoEntry.COLUMN_NAME_IDESTABLECIMIENTO, registro[i]);
+                db.insert(ConceptoContract.ConceptoEntry.TABLE_NAME, null, values);
+            }
+        }
+        //Insertar GastoIngreso
+        String[] concepto = new String[] {"Alquiler","Luz","Ingredientes","Pastelería","Ingreso","Ingreso","Ingreso","Ingreso"};
+        String[] descripcion = new String[] {"Alquiler de Enero","Luz de diciembre","Inredientes Enero","Pasteles Noviembre","Dinero inicial", "Primer ingreso", "Segundo Ingreso", "Tercer Ingreso"};
+        String[] fecha = new String[] {"12/01/2022","03/12/2021","05/01/2022","17/11/2021","22/09/2021","30/11/2021","30/12/2021","30/01/2022"};
+        Double[] importe = new Double[] {-500.0,-250.0,-300.0,-300.0,800.0,100.0,400.0,900.0};
+        long[] registroGI = new long[] {1,2,3,4,5,6,7,8};
+
+        for(int i = 0; i < concepto.length; i++){
+            ContentValues values = new ContentValues();
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_CONCEPTO, concepto[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_DESCRIPCION, descripcion[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_FECHA, fecha[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IMPORTE, importe[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_REGISTRO, registroGI[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IDESTABLECIMIENTO, 1);
+
+            db.insert(GastoIngresoContract.GastoIngresoEntry.TABLE_NAME, null, values);
+        }
+        concepto = new String[] {"Alquiler","Fruta","Verdura","Ingreso","Ingreso"};
+        descripcion = new String[] {"Alquiler de Enero","Fruta","Verdura","Primer ingreso", "Segundo Ingreso"};
+        fecha = new String[] {"12/01/2022","03/12/2021","05/11/2021","30/12/2021","30/01/2022"};
+        importe = new Double[] {-400.0,-250.0,-300.0,400.0,500.0};
+        registroGI = new long[] {21,22,23,24,25};
+
+        for(int i = 0; i < concepto.length; i++){
+            ContentValues values = new ContentValues();
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_CONCEPTO, concepto[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_DESCRIPCION, descripcion[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_FECHA, fecha[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IMPORTE, importe[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_REGISTRO, registroGI[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IDESTABLECIMIENTO, 2);
+
+            db.insert(GastoIngresoContract.GastoIngresoEntry.TABLE_NAME, null, values);
+        }
+        concepto = new String[] {"Alquiler","Luz","Revistas","Comestibles","Juguetes","Ingreso","Ingreso","Ingreso","Ingreso"};
+        descripcion = new String[] {"Alquiler de Enero","Luz","Revistas","Comestibles","Juguetes","Dinero inicial", "Primer ingreso", "Segundo Ingreso", "Tercer Ingreso"};
+        fecha = new String[] {"12/01/2022","03/12/2021","05/01/2022","17/11/2021","12/11/2021","22/10/2021","30/11/2021","30/12/2021","30/01/2022"};
+        importe = new Double[] {-500.0,-250.0,-300.0,-300.0,-300.0,600.0,100.0,400.0,700.0};
+        registroGI = new long[] {11,12,13,14,15,16,17,18,19};
+
+        for(int i = 0; i < concepto.length; i++){
+            ContentValues values = new ContentValues();
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_CONCEPTO, concepto[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_DESCRIPCION, descripcion[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_FECHA, fecha[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IMPORTE, importe[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_REGISTRO, registroGI[i]);
+            values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_IDESTABLECIMIENTO, 4);
+
+            db.insert(GastoIngresoContract.GastoIngresoEntry.TABLE_NAME, null, values);
+        }
+
+        //Configurar primer start
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+
+    }
+
+
+
+
 }

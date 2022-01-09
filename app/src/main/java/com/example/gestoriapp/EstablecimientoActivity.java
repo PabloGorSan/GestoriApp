@@ -34,8 +34,12 @@ public class EstablecimientoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_establecimiento);
 
+
+
+        TextView emptyText = (TextView) findViewById(R.id.textEmpty);
         textEstablecimiento = (TextView) findViewById(R.id.textEstablecimiento);
         listviewGastosIngresos = (ListView) findViewById(R.id.listviewGastosIngresos);
+        listviewGastosIngresos.setEmptyView(emptyText);
 
         // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
         res = getResources();

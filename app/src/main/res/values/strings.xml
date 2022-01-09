@@ -46,4 +46,9 @@
     <string name="textAñadirTransacciones"> Add your transaction </string>
     <string name="textAñadirEstablecimientos"> Add your establishment </string>
     <string name="textTuFecha"> Your date </string>
+    <string name="textVisualizarDatos"> VISUALIZE DATA </string>
+    <string name="textTransaccion"> Transaction details </string>
+    <string name="textEmpty"> You have not added any transaction yet. Click on + to add your first transaction. </string>
+    <string name="titleBienvenida"> Welcome to Gestori 💜 </string>
+    <string name="bodyBienvenida"> There is data already inserted to make it easier for you to test all functionalities, but you can delete this data.\n\nIf you want to add your own establishment, just click on + and complete the form.\n\nThank you for trying Gestori!  </string>
 </resources>

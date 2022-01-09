@@ -46,4 +46,9 @@
     <string name="textAñadirTransacciones"> Añada su transacción </string>
     <string name="textAñadirEstablecimientos"> Añada su establecimiento </string>
     <string name="textTuFecha"> Tu fecha </string>
+    <string name="textVisualizarDatos"> VISUALIZAR DATOS </string>
+    <string name="textTransaccion"> Detalles de la transacción </string>
+    <string name="textEmpty"> No has añadido ninguna transacción todavía. Pulsa en + para añadir tu primera transacción. </string>
+    <string name="titleBienvenida"> Bienvenido a Gestori 💜 </string>
+    <string name="bodyBienvenida"> Hay datos ya insertados para que te sea más fácil probar todas las funcionalidades, pero puedes borrarlos sin problemas. Si quieres añadir tu propio establecimiento, simplemente pulsa en + y completa el formulario. ¡Gracias por probar Gestori! </string>
 </resources>

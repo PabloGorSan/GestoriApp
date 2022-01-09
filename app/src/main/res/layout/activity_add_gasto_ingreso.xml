@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".AddGastoIngresoActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="587dp"
+        android:layout_height="match_parent"
+
         android:gravity="center"
 
         android:orientation="vertical"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,7 +24,7 @@
             android:id="@+id/textAddGastoIngreso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/textAñadirTransacciones"
             android:textColor="#000000"
@@ -32,7 +34,8 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="77dp">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp">
 
             <RadioButton
                 android:id="@+id/radioButtonGasto"
@@ -51,11 +54,10 @@
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextImporte"
@@ -67,11 +69,10 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextDescripcion"
@@ -82,14 +83,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:onClick="onClickFecha"
                 android:text="@string/textSeleccionarFecha"
@@ -116,20 +117,21 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="@string/textSeleccionarConcepto"
-            android:visibility="gone" />
+            android:visibility="invisible" />
 
         <Spinner
             android:id="@+id/spinnerId"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona"
-            android:visibility="gone" />
+            android:layout_marginHorizontal="20dp"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/buttonAddGastoIngreso"
-            android:layout_width="351dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="#3F51B5"
             android:onClick="onClickAddGastoIngreso"
             android:text="@string/textAñadir"

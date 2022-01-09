@@ -3,14 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_add_establecimiento.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_add_establecimiento.xml" value="0.22" />
         <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_add_gasto_ingreso.xml" value="0.22" />
         <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_bar_chart_beneficios.xml" value="0.17980072463768115" />
-        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_establecimiento.xml" value="0.19519927536231885" />
-        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_gasto_ingreso.xml" value="0.19519927536231885" />
-        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_graficas.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_establecimiento.xml" value="0.22" />
+        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_gasto_ingreso.xml" value="0.22" />
+        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_graficas.xml" value="0.22" />
         <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_line_chart_beneficios.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_main.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/alvar/Documents/FlutterApps/ANDROID_SwSistEmpotrados/GestoriAppNeoPablo/app/src/main/res/layout/activity_pie_chart_gastos.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/alvar/Downloads/GestoriAppNeoPablo/app/src/main/res/layout/activity_bar_chart_beneficios.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/alvar/Downloads/GestoriAppNeoPablo/app/src/main/res/layout/activity_line_chart_beneficios.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/alvar/Downloads/GestoriAppNeoPablo/app/src/main/res/layout/activity_main.xml" value="0.18614130434782608" />
