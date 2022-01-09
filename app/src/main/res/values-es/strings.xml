@@ -19,7 +19,7 @@
     <string name="respuestaNegativa">No</string>
     <string name="titleBorrarConfirmacion"> Confirmación </string>
     <string name="bodyBorrarConfirmacion"> ¿Estás seguro de que quieres borrarlo? </string>
-    <string name="textListaEstablecimientos"> Lista de establecimientos </string>
+    <string name="textListaEstablecimientos"> Establecimientos </string>
     <string name="textBorrar"> Borrar </string>
     <string name="textSeleccionarFecha"> Seleccionar fecha </string>
     <string name="textAñadir"> Añadir </string>
@@ -48,7 +48,7 @@
     <string name="textTuFecha"> Tu fecha </string>
     <string name="textVisualizarDatos"> VISUALIZAR DATOS </string>
     <string name="textTransaccion"> Detalles de la transacción </string>
-    <string name="textEmpty"> No has añadido ninguna transacción todavía. Pulsa en + para añadir tu primera transacción. </string>
+    <string name="textEmpty"> No has añadido ninguna transacción. Pulsa en + para añadir una. </string>
     <string name="titleBienvenida"> Bienvenido a Gestori 💜 </string>
-    <string name="bodyBienvenida"> Hay datos ya insertados para que te sea más fácil probar todas las funcionalidades, pero puedes borrarlos sin problemas. Si quieres añadir tu propio establecimiento, simplemente pulsa en + y completa el formulario. ¡Gracias por probar Gestori! </string>
+    <string name="bodyBienvenida"> Hay datos ya insertados para que te sea más fácil probar todas las funcionalidades, pero puedes borrarlos sin problemas.\n\nSi quieres añadir tu propio establecimiento, simplemente pulsa en + y completa el formulario.\n\n¡Gracias por probar Gestori! </string>
 </resources>
