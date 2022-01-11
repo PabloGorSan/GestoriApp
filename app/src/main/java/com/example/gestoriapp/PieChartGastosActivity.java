@@ -38,9 +38,12 @@ public class PieChartGastosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart_gastos);
 
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
         res = getResources();
+        //inicializar diccionario
         initDict();
 
+        // Obtenemos todos los establecimientos del mapa
         for(String key : map.keySet()){
             if(!key.equals("ESTABLECIMIENTO_SELECCIONADO") && key.charAt(0) == 'E'){
                 Establecimiento est = (Establecimiento) map.get(key);
@@ -48,22 +51,26 @@ public class PieChartGastosActivity extends AppCompatActivity {
             }
         }
 
+        // Inicializamos el gráfico circular
         PieChart pieChart = findViewById(R.id.pieChartGastos);
         pieChart.setNoDataText(res.getString(R.string.initialTextChart));
         pieChart.setNoDataTextColor(R.color.black);
 
-
+        // Sacamos la listView de la interfaz, metemos la lista de establecimientos en el
+        // ArrayAdapter y luego asignamos el ArrayAdapter al listview.
         listviewEstablecimientos = (ListView) findViewById(R.id.listViewEstBarChart);
         ArrayAdapter<Establecimiento> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,establecimientosList);
         listviewEstablecimientos.setAdapter(arrayAdapter);
 
+        // Configuramos el comportamiento de seleccionar un elemento
         listviewEstablecimientos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 //Cogemos el establecimiento que ha sido seleccionado de la listviewEstablecimientos
                 Establecimiento selectedItem = (Establecimiento) parent.getItemAtPosition(position);
-
+                // Creamos las entradas del gráfico
                 actualizarEntradas(selectedItem);
+                // Se configura y actualiza la gráfica
                 actualizarChart();
             }
         });
@@ -75,6 +82,8 @@ public class PieChartGastosActivity extends AppCompatActivity {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    // Funcion que agrupa los gastos/ingresos de un establecimiento por conceptos y
+    // crea las entradas de la grafica
     private void actualizarEntradas(Establecimiento e){
         entradas = new ArrayList<>();
         Map<String, Float> gastos = new HashMap<>();
@@ -95,6 +104,8 @@ public class PieChartGastosActivity extends AppCompatActivity {
 
     }
 
+    // Introduce las entradas en la gráfica y actualiza sus propiedades (color, tamaño, animación, texto)
+    // Se controlan los casos de error cuando no hay ningún GastoIngreso en el establecimiento
     private void actualizarChart(){
         PieChart pieChart = findViewById(R.id.pieChartGastos);
 

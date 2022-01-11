@@ -53,16 +53,12 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gasto_ingreso);
 
-        //TODO: Borrar luego
+        //Cogemos los elementos de la interfaz
         textFecha = (TextView) findViewById(R.id.textViewFecha);
-        //
-
-
         radioButtonGasto = (RadioButton) findViewById(R.id.radioButtonGasto);
         radioButtonIngreso = (RadioButton) findViewById(R.id.radioButtonIngreso);
         textInputEditTextImporte = (TextInputEditText) findViewById(R.id.textInputEditTextImporte);
         textInputEditTextDescripcion = (TextInputEditText) findViewById(R.id.textInputEditTextDescripcion);
-
 
         spinner = (Spinner) findViewById(R.id.spinnerId);
         spinnerLabel = (TextView) findViewById(R.id.spinnerLabel);
@@ -70,15 +66,16 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
         res = getResources();
 
+        //inicializar diccionario
         initDict();
+        //Cogemos el establecimiento seleccionado
         establecimiento = (Establecimiento) map.get("ESTABLECIMIENTO_SELECCIONADO");
 
-
+        // Utilizamos un ArrayAdapter al que le pasamos la lista de conceptos del establecimiento seleccionado
         ArrayAdapter<String> adp = new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,establecimiento.getConceptos());
         spinner.setAdapter(adp);
 
-
-        //Set listener Called when the item is selected in spinner
+        //Definimos el comportamiento de la selección de un elemento
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long arg3) {
@@ -100,6 +97,9 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    // Se crea un Gasto/Ingreso con los datos del formulario y se inserta en el mapa y la base de datos
+    // pero primero se hacen comprobaciones sobre la validez de los datos.
+    // En caso de error se muestran dialogs o toasts informando de lo que pasa.
     public void onClickAddGastoIngreso(View view) throws ParseException {
         String importeString = textInputEditTextImporte.getText().toString();
         String descripcion = textInputEditTextDescripcion.getText().toString();
@@ -142,26 +142,28 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         }
     }
 
+    // Funcion para ir a Establecimiento Activity
     private void goToEstablecimientoActivity(){
         Intent intent = new Intent(this, EstablecimientoActivity.class);
         Toast.makeText(AddGastoIngresoActivity.this,res.getString(R.string.confirmacionAddTransaction) , Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
+    //Mostramos la seleccion de conceptos cuando hace click en Gasto en el formulario
     public void onClickGasto(View view){
         esIngreso = false;
-        //Mostramos la seleccion de conceptos
         spinner.setVisibility(View.VISIBLE);
         spinnerLabel.setVisibility(View.VISIBLE);
     }
 
+    //Ocultamos la seleccion de conceptos cuando hace click en Ingreso en el formulario
     public void onClickIngreso(View view){
         esIngreso = true;
-        //Ocultamos la seleccion de conceptos
         spinner.setVisibility(View.INVISIBLE);
         spinnerLabel.setVisibility(View.INVISIBLE);
     }
 
+    // Mostramos un dialog con un calendario del cual sacamos la información de la fecha
     public void onClickFecha(View view){
 
         Calendar calendar = Calendar.getInstance();
@@ -185,8 +187,8 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-
-    public Dialog crearDialog(String titulo, String cuerpo){
+    // Crea un dialog con un titulo y cuerpo
+    private Dialog crearDialog(String titulo, String cuerpo){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddGastoIngresoActivity.this);
         builder.setTitle(titulo);
 
@@ -199,6 +201,7 @@ public class AddGastoIngresoActivity extends AppCompatActivity {
         return builder.create();
     }
 
+    // Mete un Gasto/Ingreso en la base de datos
     private void insertarGastoIngresoEnlaBd(SQLiteDatabase db, String concepto, String descripcion, String fecha, Double importe, long registro){
         ContentValues values = new ContentValues();
         values.put(GastoIngresoContract.GastoIngresoEntry.COLUMN_NAME_CONCEPTO, concepto);

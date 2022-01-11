@@ -2,7 +2,9 @@ package com.example.gestoriapp;
 
 import android.provider.BaseColumns;
 
-public class EstablecimientoContract {
+//Siguiendo las recomendaciones vistas en clase se crea un EstablecimientoContract y EstablecimientoEntry
+// para su uso posterior en el DBHelper
+public final class EstablecimientoContract {
     private EstablecimientoContract(){ }
 
     public static abstract class EstablecimientoEntry implements BaseColumns {

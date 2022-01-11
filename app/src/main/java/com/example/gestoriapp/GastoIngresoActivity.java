@@ -34,6 +34,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gasto_ingreso);
 
+        //Cogemos los elementos de la interfaz
         textImporte = (TextView) findViewById(R.id.valorImporte);
         textFecha = (TextView) findViewById(R.id.valorFecha);
         textDescripcion = (TextView) findViewById(R.id.valorDescripcion);
@@ -41,11 +42,13 @@ public class GastoIngresoActivity extends AppCompatActivity {
 
         // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
         res = getResources();
-
+        //inicializar diccionario
         initDict();
+        //Cogemos el GastoIngreso y establecimiento seleccionado
         gastoIngreso = (GastoIngreso) map.get("GASTOINGRESO_SELECCIONADO");
         establecimiento = (Establecimiento) map.get("ESTABLECIMIENTO_SELECCIONADO");
 
+        //Mostramos los datos del GastoIngreso por pantalla
         textImporte.setText(gastoIngreso.getImporte().toString());
         Date gastoIngresoFecha = gastoIngreso.getFecha();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -55,6 +58,8 @@ public class GastoIngresoActivity extends AppCompatActivity {
 
     }
 
+    // Sobrescribimos el comportamiento de onBackPressed para no mostrar un estado anterior
+    // desactualizado de la app e ir a EstablecimientoActivity.
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, EstablecimientoActivity.class);
@@ -67,8 +72,8 @@ public class GastoIngresoActivity extends AppCompatActivity {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    // Creamos el Dialog pidiendo confirmacion sobre el borrado del GastoIngreso
     public void onClickBorrarTransaccion(View view){
-        //Cuando se confirma la accion dentro del crearDialog se borra la transacción
         crearDialog(res.getString(R.string.titleBorrarConfirmacion),res.getString(R.string.bodyBorrarConfirmacion)).show();
     }
 
@@ -77,6 +82,8 @@ public class GastoIngresoActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(GastoIngresoActivity.this);
         builder.setTitle(titulo);
 
+        //Cuando se confirma la accion dentro del crearDialog se borra el GastoIngreso.
+        // El borrado se produce tanto en el mapa como en la base de datos
         builder.setMessage(cuerpo).setPositiveButton(res.getString(R.string.respuestaPositiva), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if(gastoIngreso.getImporte()>0){
@@ -98,7 +105,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
             }
         }).setNegativeButton(res.getString(R.string.respuestaNegativa),  new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //
+                //En caso negativo no se debe borrar
             }
         })
         ;
@@ -106,7 +113,7 @@ public class GastoIngresoActivity extends AppCompatActivity {
         return builder.create();
     }
 
-
+    //Navegamos a EstablecimientoActivity
     private void goToEstablecimiento(){
         Intent intent = new Intent(this, EstablecimientoActivity.class);
         startActivity(intent);

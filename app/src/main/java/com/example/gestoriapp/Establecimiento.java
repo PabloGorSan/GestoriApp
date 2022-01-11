@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// Almacena y agrupa los datos de un Establecimiento y define métodos para actualizar sus atributos
+
 public class Establecimiento {
 
     private String nombre;
@@ -29,7 +31,6 @@ public class Establecimiento {
         listaGastos = new ArrayList<>();
         listaIngresos = new ArrayList<>();
     }
-
 
 
     public String getNombre() {

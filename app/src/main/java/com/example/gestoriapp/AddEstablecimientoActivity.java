@@ -37,9 +37,11 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_establecimiento);
 
+        //inicializar diccionario
         initDict();
         conceptos = new ArrayList<>();
 
+        //Cogemos los inputs de la interfaz
         textInputEditTextNombre = (TextInputEditText) findViewById(R.id.textInputEditTextNombre);
         textInputEditTextCiudad = (TextInputEditText) findViewById(R.id.textInputEditTextCiudad);
         textInputEditTextCalle = (TextInputEditText) findViewById(R.id.textInputEditTextCalle);
@@ -52,18 +54,20 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
     }
 
     private void initDict () {
+        //Sabemos que este mapa no va a ser null
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    // Funcion utilizada para añadir un concepto a la lista de conceptos de un establecimiento
     public void onClickAddConcepto(View view){
 
         String concepto = textInputEditTextConceptos.getText().toString();
 
         //Los conceptos de gasto deben ser distintos de "" para ser válidos y añadidos a la lista
+        // Enseñamos un toast de confirmacion y negacion en sus respectivos casos
         if(!concepto.equals("")){
             Toast.makeText(AddEstablecimientoActivity.this, res.getString(R.string.addConceptoSuccess) , Toast.LENGTH_LONG).show();
             conceptos.add(concepto);
-
             textInputEditTextConceptos.setText("");
         }else{
             Toast.makeText(AddEstablecimientoActivity.this, res.getString(R.string.addConceptoFailure), Toast.LENGTH_LONG).show();
@@ -71,6 +75,9 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
 
     }
 
+    // Se crea un establecimiento con los datos del formulario y se inserta en el mapa y la base de datos
+    // pero primero se hacen comprobaciones sobre la validez de los datos.
+    // En caso de error se muestran dialogs informando de lo que pasa.
     public void onClickAddEstablecimiento(View view){
         Establecimiento establecimiento;
         String nombre = textInputEditTextNombre.getText().toString();
@@ -97,7 +104,8 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
 
     }
 
-    public Dialog crearDialog(String titulo, String cuerpo){
+    // Crea un dialog con un titulo y cuerpo
+    private Dialog crearDialog(String titulo, String cuerpo){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEstablecimientoActivity.this);
         builder.setTitle(titulo);
 
@@ -110,6 +118,7 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
         return builder.create();
     }
 
+    // Mete un establecimiento en la base de datos
     private void insertarEstablecimientoEnlaBd(SQLiteDatabase db, String nombre, String ciudad, String calle, String cp, long registro){
         ContentValues values = new ContentValues();
         values.put(EstablecimientoContract.EstablecimientoEntry.COLUMN_NAME_NOMBRE, nombre);
@@ -121,6 +130,7 @@ public class AddEstablecimientoActivity extends AppCompatActivity {
         db.insert(EstablecimientoContract.EstablecimientoEntry.TABLE_NAME, null, values);
     }
 
+    // Mete un concepto en la base de datos
     private void insertarConceptoEnlaBd(SQLiteDatabase db, List<String> conceptos, long registro) {
         for(String concepto : conceptos){
             ContentValues values = new ContentValues();

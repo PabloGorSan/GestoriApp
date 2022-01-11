@@ -3,6 +3,8 @@ package com.example.gestoriapp;
 
 import java.util.HashMap;
 
+// Patrón de diseño SingletonMap para la compartición de información entre las activities
+
 public class SingletonMap extends HashMap< String , Object > {
 
     private static class SingletonHolder {

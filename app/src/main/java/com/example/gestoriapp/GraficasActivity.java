@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 
+// Esta actividad sirve para navegar a las distintas gráficas de la aplicación.
+// Hay 3 botones que tienen asociadas las funciones de esta clase para navegar a su
+// correspondiente gráfica.
+
 public class GraficasActivity extends AppCompatActivity {
 
     @Override
@@ -30,7 +34,6 @@ public class GraficasActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PieChartGastosActivity.class);
         startActivity(intent);
     }
-
     public void onClickGoToLineChartBeneficios(View view){
         Intent intent = new Intent(this, LineChartBeneficiosActivity.class);
         startActivity(intent);

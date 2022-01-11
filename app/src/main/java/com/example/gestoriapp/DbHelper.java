@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+// Se definen SQL_CREATE_ENTRIES y SQL_DELETE_ENTRIES para cada tabla de la BD.
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -49,6 +50,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, dbName, null, 1);
     }
 
+    // Se crean las tablas de la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES_GastoIngreso);
@@ -56,6 +58,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES_Concepto);
     }
 
+    // Se actualiza a una nueva version las tablas de la base de datos
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES_GastoIngreso);
@@ -64,6 +67,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Se actualiza a una version anterior las tablas de la base de datos
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL(SQL_DELETE_ENTRIES_GastoIngreso);

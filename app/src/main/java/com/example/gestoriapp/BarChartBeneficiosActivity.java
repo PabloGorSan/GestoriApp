@@ -40,9 +40,12 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_chart_beneficios);
 
+        // Pillamos los resources para usar los strings definidos en los xmls de strings.xml
         res = getResources();
+        //inicializar diccionario
         initDict();
 
+        // Obtenemos todos los establecimientos del mapa
         for(String key : map.keySet()){
             if(!key.equals("ESTABLECIMIENTO_SELECCIONADO") && key.charAt(0) == 'E'){
                 Establecimiento est = (Establecimiento) map.get(key);
@@ -50,31 +53,35 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
             }
         }
 
+        // Inicializamos el gráfico de barras
         BarChart barChart = findViewById(R.id.barChartBeneficios);
         barChart.setNoDataText(res.getString(R.string.initialTextChart));
         barChart.setNoDataTextColor(R.color.black);
 
-
+        // Sacamos la listView de la interfaz, metemos la lista de establecimientos en el
+        // ArrayAdapter y luego asignamos el ArrayAdapter al listview.
         listviewEstablecimientos = (ListView) findViewById(R.id.listViewEstBarChart);
         ArrayAdapter<Establecimiento> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,establecimientosList);
         listviewEstablecimientos.setAdapter(arrayAdapter);
 
+        // Configuramos el comportamiento de seleccionar un elemento
         listviewEstablecimientos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 //Cogemos el establecimiento que ha sido seleccionado de la listviewEstablecimientos
                 Establecimiento selectedItem = (Establecimiento) parent.getItemAtPosition(position);
-
+                // Creamos las entradas del gráfico
                 actualizarEntradas(selectedItem);
+                // Se configura y actualiza la gráfica
                 actualizarChart();
             }
         });
     }
 
 
-
+    // Extendemos la clase BarDataSet para asignar nuestros propio criterio para colorear
+    // la gráfica
     public class MyBarDataSet extends BarDataSet {
-
 
         public MyBarDataSet(List<BarEntry> yVals, String label) {
             super(yVals, label);
@@ -82,14 +89,16 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
 
         @Override
         public int getColor(int index) {
-            if(getEntryForIndex(index).getY() > 0) // less than 95 green
+            if(getEntryForIndex(index).getY() > 0)
                 return mColors.get(0);
-            else // greater or equal than 100 red
+            else
                 return mColors.get(1);
         }
 
     }
 
+    // Funcion que agrupa los gastos/ingresos de un establecimiento por mes y
+    // crea las entradas de la grafica
     private void actualizarEntradas(Establecimiento e){
         ejeX = new ArrayList<>();
         entradas = new ArrayList<>();
@@ -143,6 +152,8 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
 
     }
 
+    // Introduce las entradas en la gráfica y actualiza sus propiedades (color, tamaño, animación, texto)
+    // Se controlan los casos de error cuando no hay ningún GastoIngreso en el establecimiento
     private void actualizarChart() {
         BarChart barChart = findViewById(R.id.barChartBeneficios);
 
@@ -170,8 +181,6 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
             barChart.setNoDataText(res.getString(R.string.textBeneficiosSinTransacciones));
             barChart.setNoDataTextColor(R.color.black);
         }
-
-
     }
 
     private void initDict () {
@@ -180,6 +189,7 @@ public class BarChartBeneficiosActivity extends AppCompatActivity {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    //Pone en el ejeX la fecha correspondiente a la entrada del gráfico
     private void actualizarEjeX(int mes, int anyo, List<String> ejeX){
         mes++;
         String stringAnyo = anyo+"";

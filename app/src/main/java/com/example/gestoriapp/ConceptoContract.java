@@ -2,7 +2,9 @@ package com.example.gestoriapp;
 
 import android.provider.BaseColumns;
 
-public class ConceptoContract {
+//Siguiendo las recomendaciones vistas en clase se crea un ConceptoContract y ConceptoEntry para
+// su uso posterior en el DBHelper
+public final class ConceptoContract {
 
     private ConceptoContract(){ }
 

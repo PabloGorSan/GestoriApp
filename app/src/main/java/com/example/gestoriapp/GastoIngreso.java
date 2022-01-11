@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// Almacena y agrupa los datos de un GastoIngreso y define métodos para actualizar sus atributos
+
 public class GastoIngreso implements Comparable<GastoIngreso>{
     private Double importe;
     private Date fecha;

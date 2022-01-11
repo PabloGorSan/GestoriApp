@@ -2,6 +2,8 @@ package com.example.gestoriapp;
 
 import android.provider.BaseColumns;
 
+//Siguiendo las recomendaciones vistas en clase se crea un GastoIngresoContract y GastoIngresoEntry para
+// su uso posterior en el DBHelper
 public final class GastoIngresoContract {
     private GastoIngresoContract(){ }
 

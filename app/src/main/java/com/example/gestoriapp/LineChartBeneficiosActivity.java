@@ -30,25 +30,29 @@ public class LineChartBeneficiosActivity extends AppCompatActivity {
     Calendar cal = Calendar.getInstance();
     List<Entry> entradas;
     List<String> ejeX;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_chart_beneficios);
-
+        //inicializar diccionario
         initDict();
+        // Obtenemos todos los establecimientos del mapa
         for(String key : map.keySet()){
             if(!key.equals("ESTABLECIMIENTO_SELECCIONADO") && key.charAt(0) == 'E'){
                 Establecimiento est = (Establecimiento) map.get(key);
                 establecimientosList.add(est);
             }
         }
-
+        // Creamos las entradas del gráfico
         actualizarEntradas();
+        // Se configura y actualiza la gráfica
         actualizarChart();
     }
 
 
-
+    // Funcion que agrupa los gastos/ingresos de todos los establecimiento por mes y
+    // crea las entradas de la grafica
     private void actualizarEntradas(){
         ejeX = new ArrayList<>();
         entradas = new ArrayList<>();
@@ -108,15 +112,11 @@ public class LineChartBeneficiosActivity extends AppCompatActivity {
 
     }
 
+    // Introduce las entradas en la gráfica y actualiza sus propiedades (color, tamaño, animación, texto)
+    // Los casos de error ya han sido controlados previos a entrar a esta actividad
     private void actualizarChart(){
         LineChart lineChart = findViewById(R.id.lineChartBeneficios);
 
-        /*
-        ArrayList<Entry> e = new ArrayList<>();
-        e.add(new Entry(0,3));
-        e.add(new Entry(1,4));
-        e.add(new Entry(2,2));
-        */
         LineDataSet lineDataSet = new LineDataSet(entradas, "");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet);
@@ -147,6 +147,7 @@ public class LineChartBeneficiosActivity extends AppCompatActivity {
         map = (SortedMap<String,Object>) SingletonMap.getInstance().get(MainActivity.SHARED_DATA_KEY);
     }
 
+    //Pone en el ejeX la fecha correspondiente a la entrada del gráfico
     private void actualizarEjeX(int mes, int anyo, List<String> ejeX){
         mes++;
         String stringAnyo = anyo+"";
